@@ -1,0 +1,645 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This api will search for properties sold in last 3 year from top real states site in US",
+    "version": "1.0.0",
+    "title": "Recently Sold API",
+    "contact": {
+      "email": "recentlysol@mail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "virtserver.swaggerhub.com",
+  "basePath": "/shariq_sami/recentlysold/1.0.0",
+  "tags": [
+    {
+      "name": "developers",
+      "description": "Operations available to regular developers"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/propertie_details": {
+      "get": {
+        "tags": [
+          "developers"
+        ],
+        "summary": "Give details of property",
+        "description": "By passing property id you can get full details about that property\n",
+        "operationId": "searchInventory",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "property ID",
+            "required": false,
+            "type": "string",
+            "format": "str"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "property results matching ID",
+            "schema": {
+              "$ref": "#/definitions/inline_response_200"
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/search_api": {
+      "post": {
+        "tags": [
+          "developers"
+        ],
+        "summary": "Search for the property accoording to give parameters",
+        "description": "By passing parameters you can get list of properties according to criteria\n",
+        "operationId": "searchProperty",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "venue",
+            "in": "query",
+            "description": "site from where you want",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "property results matching ID",
+            "schema": {
+              "$ref": "#/definitions/inline_response_200_1"
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "search_data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/search_data_inner"
+      }
+    },
+    "graph": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/graph_inner"
+      }
+    },
+    "details_of_listing": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "example": 1
+        },
+        "zipcode": {
+          "type": "string",
+          "example": "10002"
+        },
+        "state_id": {
+          "type": "string",
+          "example": "1"
+        },
+        "street": {
+          "type": "string",
+          "example": "100 Suffolk St APT 2D"
+        },
+        "city_id": {
+          "type": "string",
+          "example": "2"
+        },
+        "bedrooms": {
+          "type": "string",
+          "example": "1"
+        },
+        "bathrooms": {
+          "type": "string",
+          "example": "1"
+        },
+        "broker_id": {
+          "type": "string",
+          "format": "nullable"
+        },
+        "brokerage_name": {
+          "type": "string",
+          "format": "nullable"
+        },
+        "county": {
+          "type": "string",
+          "example": "New York County"
+        },
+        "county_id": {
+          "type": "string",
+          "example": "2452"
+        },
+        "currency": {
+          "type": "string",
+          "example": "USD"
+        },
+        "date_posted": {
+          "type": "string",
+          "example": "2019-06-20T16:39:54.000+0000"
+        },
+        "date_price_changed": {
+          "type": "string",
+          "format": "nullable"
+        },
+        "date_sold": {
+          "type": "string",
+          "example": "2019-06-28T16:39:54.000+0000"
+        },
+        "description": {
+          "type": "string",
+          "example": "100 Suffolk St APT 2D New York NY 10002 is a condo"
+        },
+        "hdp_type_dimension": {
+          "type": "string",
+          "example": "RecentlySold"
+        },
+        "home_status": {
+          "type": "string",
+          "example": "SOLD"
+        },
+        "home_type": {
+          "type": "string",
+          "example": "CONDO"
+        },
+        "last_sold_price": {
+          "type": "string",
+          "example": "458600"
+        },
+        "latitude": {
+          "type": "string",
+          "example": "40.71846008300781"
+        },
+        "longiture": {
+          "type": "string",
+          "example": "-73.986083984375"
+        },
+        "listing_type_dimension": {
+          "type": "string",
+          "example": "Unknown Listed By"
+        },
+        "living_area": {
+          "type": "string",
+          "format": "nullable"
+        },
+        "price": {
+          "type": "string",
+          "example": "450000"
+        },
+        "what_i_love": {
+          "type": "string",
+          "format": "nullable"
+        },
+        "year_built": {
+          "type": "string",
+          "example": "1920"
+        },
+        "zestimate": {
+          "type": "string",
+          "example": "432446"
+        },
+        "zestimate_high_percent": {
+          "type": "string",
+          "example": "11"
+        },
+        "zestimate_low_percent": {
+          "type": "string",
+          "example": "19"
+        },
+        "zestimate_minus_30": {
+          "type": "string",
+          "example": "432825"
+        },
+        "posting_contact_id": {
+          "type": "string",
+          "example": "1"
+        },
+        "zpid": {
+          "type": "string",
+          "example": "72511416"
+        },
+        "source": {
+          "type": "string",
+          "example": "zillow"
+        },
+        "source_link": {
+          "type": "string",
+          "example": "72511416"
+        }
+      }
+    },
+    "image": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/image_inner"
+      }
+    },
+    "price_history": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/price_history_inner"
+      }
+    },
+    "InventoryItem": {
+      "type": "object",
+      "required": [
+        "id",
+        "manufacturer",
+        "name",
+        "releaseDate"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "example": "d290f1ee-6c54-4b01-90e6-d701748f0851"
+        },
+        "name": {
+          "type": "string",
+          "example": "Widget Adapter"
+        },
+        "releaseDate": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2016-08-29T09:12:33.001+0000"
+        },
+        "manufacturer": {
+          "$ref": "#/definitions/Manufacturer"
+        }
+      }
+    },
+    "Manufacturer": {
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "ACME Corporation"
+        },
+        "homePage": {
+          "type": "string",
+          "format": "url",
+          "example": "https://www.acme-corp.com"
+        },
+        "phone": {
+          "type": "string",
+          "example": "408-867-5309"
+        }
+      }
+    },
+    "inline_response_200": {
+      "type": "object",
+      "properties": {
+        "details_of_listing": {
+          "$ref": "#/definitions/details_of_listing"
+        },
+        "image": {
+          "$ref": "#/definitions/image"
+        },
+        "price_history": {
+          "$ref": "#/definitions/price_history"
+        }
+      }
+    },
+    "inline_response_200_1": {
+      "type": "object",
+      "properties": {
+        "total_results": {
+          "type": "integer",
+          "format": "int32",
+          "example": 20
+        },
+        "search_date": {
+          "$ref": "#/definitions/search_data"
+        },
+        "graph": {
+          "$ref": "#/definitions/graph"
+        }
+      }
+    },
+    "search_data_inner_image": {
+      "type": "object",
+      "properties": {
+        "1": {
+          "type": "string",
+          "example": "https://photos.zillowstatic.com/fp/6be266ac2b8903519bfb0833f3ba7af9-p_h.jpg"
+        },
+        "26": {
+          "type": "string",
+          "example": "https://photos.zillowstatic.com/fp/beab8bc928ba2c8360cc9ffcabc75840-p_h.jpg"
+        },
+        "27": {
+          "type": "string",
+          "example": "https://photos.zillowstatic.com/fp/8bab8b17b4fb14c396789afc3c5d9747-p_h.jpg"
+        },
+        "28": {
+          "type": "string",
+          "example": "https://photos.zillowstatic.com/fp/3d859868648da5f4e3734fde3731c3c6-p_h.jpg"
+        },
+        "29": {
+          "type": "string",
+          "example": "https://photos.zillowstatic.com/fp/086236b9fd4ffc98493ac559ee43aed2-p_h.jpg"
+        },
+        "30": {
+          "type": "string",
+          "example": "https://photos.zillowstatic.com/fp/171dfb201d56e94e294cd9a790e08988-p_h.jpg"
+        },
+        "31": {
+          "type": "string",
+          "example": "https://photos.zillowstatic.com/fp/6055429bb0a6fc4e73be7fa96dff4618-p_h.jpg"
+        },
+        "35": {
+          "type": "string",
+          "example": "https://photos.zillowstatic.com/fp/6be266ac2b8903519bfb0833f3ba7af9-p_h.jpg"
+        },
+        "36": {
+          "type": "string",
+          "example": "https://photos.zillowstatic.com/fp/beab8bc928ba2c8360cc9ffcabc75840-p_h.jpg"
+        },
+        "37": {
+          "type": "string",
+          "example": "https://photos.zillowstatic.com/fp/8bab8b17b4fb14c396789afc3c5d9747-p_h.jpg"
+        },
+        "38": {
+          "type": "string",
+          "example": "https://photos.zillowstatic.com/fp/3d859868648da5f4e3734fde3731c3c6-p_h.jpg"
+        },
+        "39": {
+          "type": "string",
+          "example": "https://photos.zillowstatic.com/fp/086236b9fd4ffc98493ac559ee43aed2-p_h.jpg"
+        },
+        "40": {
+          "type": "string",
+          "example": "https://photos.zillowstatic.com/fp/171dfb201d56e94e294cd9a790e08988-p_h.jpg"
+        },
+        "41": {
+          "type": "string",
+          "example": "https://photos.zillowstatic.com/fp/6055429bb0a6fc4e73be7fa96dff4618-p_h.jpg"
+        },
+        "45": {
+          "type": "string",
+          "example": "https://photos.zillowstatic.com/fp/6be266ac2b8903519bfb0833f3ba7af9-p_h.jpg"
+        },
+        "46": {
+          "type": "string",
+          "example": "https://photos.zillowstatic.com/fp/beab8bc928ba2c8360cc9ffcabc75840-p_h.jpg"
+        },
+        "47": {
+          "type": "string",
+          "example": "https://photos.zillowstatic.com/fp/8bab8b17b4fb14c396789afc3c5d9747-p_h.jpg"
+        },
+        "48": {
+          "type": "string",
+          "example": "https://photos.zillowstatic.com/fp/3d859868648da5f4e3734fde3731c3c6-p_h.jpg"
+        },
+        "49": {
+          "type": "string",
+          "example": "https://photos.zillowstatic.com/fp/086236b9fd4ffc98493ac559ee43aed2-p_h.jpg"
+        },
+        "50": {
+          "type": "string",
+          "example": "https://photos.zillowstatic.com/fp/171dfb201d56e94e294cd9a790e08988-p_h.jpg"
+        },
+        "51": {
+          "type": "string",
+          "example": "https://photos.zillowstatic.com/fp/6055429bb0a6fc4e73be7fa96dff4618-p_h.jpg"
+        }
+      }
+    },
+    "search_data_inner": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "example": 1
+        },
+        "zipcode": {
+          "type": "string",
+          "example": "10002"
+        },
+        "state_id": {
+          "type": "string",
+          "example": "1"
+        },
+        "street": {
+          "type": "string",
+          "example": "100 Suffolk St APT 2D"
+        },
+        "city_id": {
+          "type": "string",
+          "example": "2"
+        },
+        "bedrooms": {
+          "type": "string",
+          "example": "1"
+        },
+        "bathrooms": {
+          "type": "string",
+          "example": "1"
+        },
+        "broker_id": {
+          "type": "string",
+          "format": "nullable"
+        },
+        "brokerage_name": {
+          "type": "string",
+          "format": "nullable"
+        },
+        "county": {
+          "type": "string",
+          "example": "New York County"
+        },
+        "county_id": {
+          "type": "string",
+          "example": "2452"
+        },
+        "currency": {
+          "type": "string",
+          "example": "USD"
+        },
+        "date_posted": {
+          "type": "string",
+          "example": "2019-06-20T16:39:54.000+0000"
+        },
+        "date_price_changed": {
+          "type": "string",
+          "format": "nullable"
+        },
+        "date_sold": {
+          "type": "string",
+          "example": "2019-06-28T16:39:54.000+0000"
+        },
+        "description": {
+          "type": "string",
+          "example": "100 Suffolk St APT 2D New York"
+        },
+        "hdp_type_dimension": {
+          "type": "string",
+          "example": "RecentlySold"
+        },
+        "home_status": {
+          "type": "string",
+          "example": "SOLD"
+        },
+        "home_type": {
+          "type": "string",
+          "example": "CONDO"
+        },
+        "last_sold_price": {
+          "type": "string",
+          "example": "458600"
+        },
+        "latitude": {
+          "type": "string",
+          "example": "40.71846008300781"
+        },
+        "longiture": {
+          "type": "string",
+          "example": "-73.986083984375"
+        },
+        "listing_type_dimension": {
+          "type": "string",
+          "example": "Unknown Listed By"
+        },
+        "living_area": {
+          "type": "string",
+          "format": "nullable"
+        },
+        "price": {
+          "type": "string",
+          "example": "450000"
+        },
+        "what_i_love": {
+          "type": "string",
+          "format": "nullable"
+        },
+        "year_built": {
+          "type": "string",
+          "example": "1920"
+        },
+        "zestimate": {
+          "type": "string",
+          "example": "432446"
+        },
+        "zestimate_high_percent": {
+          "type": "string",
+          "example": "11"
+        },
+        "zestimate_low_percent": {
+          "type": "string",
+          "example": "19"
+        },
+        "zestimate_minus_30": {
+          "type": "string",
+          "example": "432825"
+        },
+        "posting_contact_id": {
+          "type": "string",
+          "example": "1"
+        },
+        "zpid": {
+          "type": "string",
+          "example": "72511416"
+        },
+        "source": {
+          "type": "string",
+          "example": "zillow"
+        },
+        "source_link": {
+          "type": "string",
+          "example": "72511416"
+        },
+        "image": {
+          "$ref": "#/definitions/search_data_inner_image"
+        }
+      }
+    },
+    "graph_inner": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "string",
+          "example": "2019"
+        },
+        "y": {
+          "type": "string",
+          "example": "1094973.1111"
+        }
+      }
+    },
+    "image_inner": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "example": "https://photos.zillowstatic.com/fp/6be266ac2b8903519bfb0833f3ba7af9-p_h.jpg"
+        }
+      }
+    },
+    "price_history_inner": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "example": 1
+        },
+        "property_id": {
+          "type": "string",
+          "example": "1"
+        },
+        "event": {
+          "type": "string",
+          "example": "Sold"
+        },
+        "time": {
+          "type": "string",
+          "example": "1567036800000"
+        },
+        "price": {
+          "type": "string",
+          "example": "450000"
+        },
+        "price_change_rate": {
+          "type": "string",
+          "example": "-0.03225806451612903"
+        },
+        "source": {
+          "type": "string",
+          "example": "Public Record"
+        },
+        "buyer_agent_id": {
+          "type": "string",
+          "example": "1"
+        }
+      }
+    }
+  }
+}
